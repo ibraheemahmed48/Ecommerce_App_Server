@@ -77,11 +77,12 @@ adminRouter.get("/admin/analytics", admin, async (req, res) => {
 
     const totalOrders = orders.length;
     const totalProducts = await Product.find({}).countDocuments();
-    let catMobiles = await getCategoryTotalSale("Mobiles");
-    let catAppliances = await getCategoryTotalSale("Appliances");
+    let catMobiles = await getCategoryTotalSale("Mobile");
+    let catAppliances = await getCategoryTotalSale("Appliance");
     let catFashion = await getCategoryTotalSale("Fashion");
-    let catEssentials = await getCategoryTotalSale("Essentials");
-    let catComputers = await getCategoryTotalSale("Computers");
+    let catEssentials = await getCategoryTotalSale("Essential");
+    let catComputers = await getCategoryTotalSale("Computer");
+    let catBooks = await getCategoryTotalSale("Books");
 
     let totals = {
       totalSales,
@@ -92,6 +93,7 @@ adminRouter.get("/admin/analytics", admin, async (req, res) => {
       catFashion,
       catEssentials,
       catComputers,
+      catBooks
     };
 
     res.json(totals);
